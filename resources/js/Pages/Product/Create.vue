@@ -17,7 +17,7 @@
             <div class="my-3">
                 <label for="category_id" class="me-3">CATEGORY</label><br>
                 <select type="text" id="category_id" name="category_id" v-model="form.category_id">
-                    <option v-for="category in categories" :value="category.id">
+                    <option v-for="category in categories" :value="category.id"> <!---Missing :key="" attribute-->
                         {{ category.name }}
                     </option>
                 </select>
@@ -45,6 +45,8 @@ export default {
     },
     methods: {
         submit() {
+            //when we have a form its much better and easier to call it like this:
+            //this.form.post(route('products.store'), {...options})
             this.$inertia.post(route('products.store'), this.form, {
                 onSuccess: () => {
                     this.form.reset();

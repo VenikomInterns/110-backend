@@ -16,16 +16,17 @@ class ImageController extends Controller
     {
         $images = Image::all();
         return Inertia::render('Image/Index', compact('images'));
-    }
+    } //excellent
 
     public function create(): Response
     {
         $products = Product::all();
         return Inertia::render('Image/Create', compact('products'));
-    }
+    } //excellent
 
     public function store(Request $request): RedirectResponse
     {
+        //How we can be sure that the user is uploading image?. Maybe its pdf or any other mime. 
         $image = new Image();
 
         if ($request->hasFile('image')) {
@@ -33,7 +34,8 @@ class ImageController extends Controller
             $image->image = Str::substr($path, 14);
         }
 
-        $image->product_id = $request->input('product_id');
+        //how we can be sure the user is providing product_id?
+        $image->product_id = $request->input('product_id');  
         $image->save();
         return redirect()->back();
     }

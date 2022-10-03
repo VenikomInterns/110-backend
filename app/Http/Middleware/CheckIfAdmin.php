@@ -14,5 +14,5 @@ class CheckIfAdmin
         abort_if(!$user->admin, 403);
 
         return $next($request);
-    }
+    }//excellent
 }

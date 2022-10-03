@@ -16,6 +16,7 @@ export default {
         getImagePath(image) {
             return new URL('../../../../storage/app/public/images/' + image, import.meta.url).href;
         }
+        //This won't work in production. 
     }
 }
 </script>

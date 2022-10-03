@@ -26,5 +26,5 @@ class CategorySeeder extends Seeder
         Category::query()->create([
             'name' => 'Laptops'
         ]);
-    }
+    }//excellent
 }

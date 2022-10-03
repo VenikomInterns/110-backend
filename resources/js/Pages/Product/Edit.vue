@@ -17,7 +17,7 @@
             <div class="my-3">
                 <label for="category_id" class="me-3">CATEGORY</label><br>
                 <select type="text" id="category_id" name="category_id" v-model="form.category_id">
-                    <option v-for="category in categories" :value="category.id">
+                    <option v-for="category in categories" :value="category.id"> <!---Missing :key="" attribute-->
                         {{ category.name }}
                     </option>
                 </select>
@@ -36,6 +36,8 @@ export default {
     },
     data() {
         return {
+            // why not like:
+            // form: this.$inertia.form({...this.product})
             form: this.$inertia.form({
                 name: this.product.name,
                 price: this.product.price,
@@ -46,6 +48,8 @@ export default {
     },
     methods: {
         submit() {
+            // Its much better to use is like:
+            // this.form.put()... 
             this.$inertia.put(route('products.update', this.product), this.form);
         }
     }

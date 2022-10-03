@@ -21,4 +21,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
     }
+    // How we seed our database if our seeders aren't defined here?
+    // We can seed them one by one but if we need to do that each time we migrate:fresh it's time consuming.
+    // I suggest calling our seeders here
+    // $this->call([AdminSeeder::class]);
+    // if(!app->enviroment('production')){
+    // $this->call([CategorySeeder::class, ProductSeeder::class]);
+    // }
 }

@@ -15,27 +15,27 @@ class ProductController extends Controller
     {
         $products = Product::query()->paginate(4);
         return Inertia::render('Product/Index', compact('products'));
-    }
+    }//exellent
 
     public function show(Product $product): Response
     {
        $product->loadMissing('images');
        return Inertia::render('Product/Show', compact('product'));
-    }
+    }//exellent
 
     public function create(): Response
     {
         $categories = Category::all();
         return Inertia::render('Product/Create', compact('categories'));
-    }
+    }//exellent
 
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
             'name' => 'required',
-            'price' => 'required',
+            'price' => 'required', //What if user provides doesn't send us real number but string instead.
             'description' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required' // What if user doesn't give us real id of category.
         ]);
 
         Product::query()->create($validated);
@@ -52,9 +52,9 @@ class ProductController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required',
-            'price' => 'required',
+            'price' => 'required', //What if user provides doesn't send us real number but string instead.
             'description' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required'// What if user doesn't give us real id of category.
         ]);
 
         $product->fill($validated);

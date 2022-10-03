@@ -26,6 +26,7 @@ export default {
     methods: {
         getImagePath(image) {
             return new URL('../../../../storage/app/public/images/' + image, import.meta.url).href;
+            //this won't work in production. I guess it will only work when running npm run dev. This is very wrong. You need to generate the public url from the backend 
         }
     }
 }

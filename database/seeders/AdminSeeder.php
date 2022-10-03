@@ -20,6 +20,6 @@ class AdminSeeder extends Seeder
             'email' => 'emilija@gmail.com',
             'password' => bcrypt('emilija2709#'),
             'admin' => true,
-        ]);
+        ]); //excellent
     }
 }

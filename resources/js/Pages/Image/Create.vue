@@ -1,5 +1,6 @@
 <template>
     <div class="py-5">
+        <!----We dont need enctype multpart form date when using vue to submit da form-->
         <form @submit.prevent="submit" enctype="multipart/form-data" method="post" class="d-flex flex-column align-items-center">
             <div class="my-3 d-flex flex-column justify-content-center">
                 <label for="image" class="me-3 my-1 text-center">UPLOAD IMAGE HERE:</label><br>
@@ -8,7 +9,7 @@
             <div class="my-3">
                 <label for="product_id" class="me-3 my-1">PRODUCT</label><br>
                 <select type="text" id="product_id" name="product_id" v-model="form.product_id">
-                    <option v-for="product in products" :value="product.id">
+                    <option v-for="product in products" :value="product.id"> <!---What if our shop has thousands of products? Is this good-->
                         {{ product.name }}
                     </option>
                 </select>
@@ -49,7 +50,7 @@ export default {
             const file = e.target.files[0];
             if (!file) return;
             form.image = file;
-            console.log(form.image);
+            console.log(form.image); // we don't leave console.logs
         }
 
         return {form, handleChange, submit}

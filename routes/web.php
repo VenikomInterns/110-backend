@@ -37,10 +37,13 @@ Route::middleware([
     })->name('dashboard');
 });
 
+//Why first check for admin. It should be last in the list. Also why we dont add theese in the upper group.
 Route::middleware(['admin', 'auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
-    Route::resource('images-upload', ImageController::class);
+    Route::resource('images-upload', ImageController::class); 
+    // Why not images but images-upload. 
+    // Why we define routes that we don't use. (destroy etc.)
 });
 
 
